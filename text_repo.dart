@@ -1,3 +1,3 @@
 void main() {
-    print("Mostafa1");
+//Q1
 }

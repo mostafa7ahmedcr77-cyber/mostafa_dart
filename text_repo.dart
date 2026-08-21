@@ -1,206 +1,288 @@
-import 'dart:io';
+// 1. Student Grade Calculator
+
+class Student {
+  String name;
+  int age;
+  double grade;
+
+  Student(this.name, this.age, this.grade);
+
+  bool isPassed() {
+    return grade >= 50;
+  }
+
+  void printInfo() {
+    print("Name: $name");
+    print("Age: $age");
+    print("Grade: $grade");
+    print("Passed: ${isPassed()}");
+  }
+}
+
+
+// 2. Rectangle Calculator
+
+class Rectangle {
+  double width;
+  double height;
+
+  Rectangle(this.width, this.height);
+
+  double calculateArea() {
+    return width * height;
+  }
+
+  double calculatePerimeter() {
+    return 2 * (width + height);
+  }
+
+  bool isSquare() {
+    return width == height;
+  }
+}
+
+
+// 3. Bank Account
+
+class BankAccount {
+  String ownerName;
+  String accountNumber;
+  double balance;
+
+  BankAccount(this.ownerName, this.accountNumber, this.balance);
+
+  void deposit(double amount) {
+    balance += amount;
+  }
+
+  void withdraw(double amount) {
+    if (amount <= balance) {
+      balance -= amount;
+      print("Withdrawn: $amount");
+    } else {
+      print("Not enough balance!");
+    }
+  }
+
+  void showBalance() {
+    print("Current Balance: $balance");
+  }
+}
+
+
+// 4. Product Discount System
+
+class DiscountProduct {
+  String name;
+  double price;
+  int quantity;
+
+  DiscountProduct(this.name, this.price, this.quantity);
+
+  double calculateTotal() {
+    return price * quantity;
+  }
+
+  double applyDiscount(double percentage) {
+    double discount = calculateTotal() * percentage / 100;
+    return calculateTotal() - discount;
+  }
+
+  void printReceipt() {
+    print("Product: $name");
+    print("Quantity: $quantity");
+    print("Total Price: ${calculateTotal()}");
+    print("Discounted Price: ${applyDiscount(10)}");
+  }
+}
+
+
+// 5. Car Fuel Calculator
+
+class Car {
+  String brand;
+  String model;
+  double fuel;
+  double fuelConsumption;
+
+  Car(this.brand, this.model, this.fuel, this.fuelConsumption);
+
+  void drive(double distance) {
+    double fuelNeeded = (distance * fuelConsumption) / 100;
+
+    if (fuelNeeded <= fuel) {
+      fuel -= fuelNeeded;
+
+      print("Distance: $distance km");
+      print("Fuel used: $fuelNeeded liters");
+    } else {
+      print("Not enough fuel!");
+    }
+  }
+
+  void refuel(double amount) {
+    fuel += amount;
+  }
+
+  void showInfo() {
+    print("Brand: $brand");
+    print("Model: $model");
+    print("Current Fuel: $fuel liters");
+    print("Fuel Consumption: $fuelConsumption L/100km");
+  }
+}
+
+
+// 6. Simple Shopping Cart
+
+class Product {
+  String name;
+  double price;
+  int quantity;
+
+  Product(this.name, this.price, this.quantity);
+
+  double getTotalPrice() {
+    return price * quantity;
+  }
+}
+
+
+class ShoppingCart {
+  List<Product> products = [];
+
+  void addProduct(Product product) {
+    products.add(product);
+  }
+
+  double calculateTotal() {
+    double total = 0;
+
+    for (Product product in products) {
+      total += product.getTotalPrice();
+    }
+
+    return total;
+  }
+
+  void showCart() {
+    print("Shopping Cart:");
+
+    for (Product product in products) {
+      print(
+        "${product.name} - Quantity: ${product.quantity} - Total: ${product.getTotalPrice()}",
+      );
+    }
+
+    print("Cart Total: ${calculateTotal()}");
+  }
+
+  double applyDiscount(double percentage) {
+    double total = calculateTotal();
+    double discount = total * percentage / 100;
+
+    return total - discount;
+  }
+}
+
+
+// MAIN
 
 void main() {
 
-  // Task 1 
+  // 1. Student
 
-  print("===== Task 1 =====");
+  Student student1 = Student("Ahmed", 20, 85);
+  Student student2 = Student("Sara", 19, 45);
+  Student student3 = Student("Omar", 21, 60);
 
-  Map<String, int> students = {
-    "Ahmed": 85,
-    "Ali": 75,
-    "Omar": 90,
-    "Mona": 65,
-    "Sara": 80,
-  };
-
-  int totalGrades = 0;
-
-  for (var student in students.entries) {
-    print("${student.key}: ${student.value}");
-
-    if (student.value >= 80) {
-      print("${student.key} scored 80 or higher");
-    }
-
-    totalGrades += student.value;
-  }
-
-  double average = totalGrades / students.length;
-  print("Average Grade: $average");
+  student1.printInfo();
+  student2.printInfo();
+  student3.printInfo();
 
 
-  // Task 2 
+  // 2. Rectangle
 
-  print("\n===== Task 2 =====");
+  Rectangle rectangle = Rectangle(10, 5);
 
-  List<int> numbers = [1, 2, 3, 2, 4, 5, 1, 3, 6, 4];
-
-  Set<int> uniqueNumbers = {};
-
-  for (int number in numbers) {
-    uniqueNumbers.add(number);
-  }
-
-  print("Unique numbers: $uniqueNumbers");
-  print("Number of unique numbers: ${uniqueNumbers.length}");
+  print("Width: ${rectangle.width}");
+  print("Height: ${rectangle.height}");
+  print("Area: ${rectangle.calculateArea()}");
+  print("Perimeter: ${rectangle.calculatePerimeter()}");
+  print("Is Square: ${rectangle.isSquare()}");
 
 
-  // Task 3 
+  // 3. Bank Account
 
-  print("\n===== Task 3 =====");
+  BankAccount account = BankAccount(
+    "Ahmed",
+    "123456",
+    1000,
+  );
 
-  Map<String, double> products = {
-    "Laptop": 1000,
-    "Mouse": 30,
-    "Keyboard": 70,
-    "Headphones": 120,
-    "USB Cable": 20,
-  };
+  account.showBalance();
 
-  double totalPrice = 0;
-  String mostExpensive = "";
-  double highestPrice = 0;
+  account.deposit(500);
+  account.showBalance();
 
-  for (var product in products.entries) {
-    print("${product.key}: \$${product.value}");
+  account.withdraw(300);
+  account.showBalance();
 
-    totalPrice += product.value;
-
-    if (product.value > 50) {
-      print("${product.key} costs more than 50");
-    }
-
-    if (product.value > highestPrice) {
-      highestPrice = product.value;
-      mostExpensive = product.key;
-    }
-  }
-
-  print("Total Price: \$${totalPrice}");
-  print("Most Expensive Product: $mostExpensive");
+  account.withdraw(1500);
+  account.showBalance();
 
 
-  // Task 4 
+  // 4. Product Discount
 
-  print("\n===== Task 4 =====");
+  DiscountProduct product = DiscountProduct(
+    "Laptop",
+    1000,
+    2,
+  );
 
-  int secretNumber = 7;
-  int attempts = 0;
-  int guess = 0;
-
-  while (guess != secretNumber) {
-    stdout.write("Enter a number: ");
-    guess = int.parse(stdin.readLineSync()!);
-
-    attempts++;
-
-    if (guess > secretNumber) {
-      print("Too high!");
-    } else if (guess < secretNumber) {
-      print("Too low!");
-    } else {
-      print("Correct!");
-      print("Attempts: $attempts");
-    }
-  }
+  product.printReceipt();
 
 
-  // Task 5 
+  // 5. Car
 
-  print("\n===== Task 5 =====");
+  Car car = Car(
+    "Toyota",
+    "Corolla",
+    20,
+    6,
+  );
 
-  List<String> words = [
-    "hello",
-    "world",
-    "hello",
-    "dart",
-    "flutter",
-    "dart",
-    "hello"
-  ];
+  car.showInfo();
 
-  Set<String> uniqueWords = {};
+  car.drive(100);
 
-  Map<String, int> wordCount = {};
+  car.showInfo();
 
-  for (String word in words) {
-    uniqueWords.add(word);
+  car.refuel(10);
 
-    if (wordCount.containsKey(word)) {
-      wordCount[word] = wordCount[word]! + 1;
-    } else {
-      wordCount[word] = 1;
-    }
-  }
+  car.showInfo();
 
-  print("Unique words:");
+  car.drive(500);
 
-  for (String word in uniqueWords) {
-    print(word);
-  }
-
-  print("Number of unique words: ${uniqueWords.length}");
-
-  print("Word counts:");
-
-  for (var word in wordCount.entries) {
-    print("${word.key}: ${word.value}");
-  }
+  car.showInfo();
 
 
-  // Task 6 
+  // 6. Shopping Cart
 
-  print("\n===== Task 6 =====");
 
-  double balance = 1000;
-  int choice;
+  Product product1 = Product("Laptop", 1000, 1);
+  Product product2 = Product("Mouse", 50, 2);
+  Product product3 = Product("Keyboard", 100, 1);
 
-  do {
-    print("\n--- ATM Menu ---");
-    print("1. Check Balance");
-    print("2. Deposit");
-    print("3. Withdraw");
-    print("4. Exit");
+  ShoppingCart cart = ShoppingCart();
 
-    stdout.write("Choose an option: ");
-    choice = int.parse(stdin.readLineSync()!);
+  cart.addProduct(product1);
+  cart.addProduct(product2);
+  cart.addProduct(product3);
 
-    if (choice == 1) {
-      print("Current Balance: \$${balance}");
-    } 
-    
-    else if (choice == 2) {
-      stdout.write("Enter deposit amount: ");
-      double amount = double.parse(stdin.readLineSync()!);
+  cart.showCart();
 
-      balance += amount;
-
-      print("Deposit successful.");
-      print("New Balance: \$${balance}");
-    } 
-    
-    else if (choice == 3) {
-      stdout.write("Enter withdrawal amount: ");
-      double amount = double.parse(stdin.readLineSync()!);
-
-      if (amount <= balance) {
-        balance -= amount;
-
-        print("Withdrawal successful.");
-        print("New Balance: \$${balance}");
-      } else {
-        print("Not enough money.");
-      }
-    } 
-    
-    else if (choice == 4) {
-      print("Goodbye!");
-    } 
-    
-    else {
-      print("Invalid option");
-    }
-
-  } while (choice != 4);
+  print(
+    "Price after 10% discount: ${cart.applyDiscount(10)}",
+  );
 }

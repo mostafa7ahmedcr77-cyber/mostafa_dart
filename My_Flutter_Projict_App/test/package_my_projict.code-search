@@ -1,9 +1,0 @@
-# Query: package:my_projict
-# ContextLines: 1
-
-1 result - 1 file
-
-My_Flutter_Projict_App\test\widget_test.dart:
-  10  
-  11: import 'package:flutter_application_1/main.dart';
-  12  

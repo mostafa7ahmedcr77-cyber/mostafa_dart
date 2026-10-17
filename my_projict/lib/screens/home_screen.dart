@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_projict/screens/account_screen.dart';
+import 'package:my_projict/screens/cart_screen.dart';
+import 'package:my_projict/screens/explor_screen.dart';
+import 'package:my_projict/screens/favourite_screen.dart';
+import 'package:my_projict/screens/product_screen.dart';
+import 'package:my_projict/screens/search_screen.dart';
 import 'package:my_projict/widget/groceries_container.dart';
 import 'package:my_projict/widget/item_card.dart';
 import 'package:my_projict/widget/search_widget.dart';
@@ -9,113 +15,354 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          SizedBox(height: 56),
-          Image.asset(
-            "assets/image/Group.png",
-            width: double.infinity,
-            height: 55,
-          ),
-          SizedBox(height: 8),
+    return Scaffold(
+      backgroundColor: Colors.white,
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 5,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset("assets/icons/Delicery address.png", width: 16),
-              Text(
-                "Dhaka, Banassre",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: .w600,
-                  color: Color(0xff4C4F4D),
+              Image.asset("assets/image/Group.png"),
+
+              const SizedBox(height: 15),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/icons/Exclude.png"),
+                  const SizedBox(width: 5),
+                  const Text(
+                    'Dhaka, Banassre',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff4C4F4D),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 15),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: const Color(0xffF2F3F2),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset("assets/icons/Vector.png"),
+                      const SizedBox(width: 10),
+                      const Text(
+                        "Search Store",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff7C7C7C),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+
+              const SizedBox(height: 15),
+
+              Image.asset("assets/image/banner.png"),
+
+              const SizedBox(height: 20),
+
+              const SectionHeader(title: "Exclusive Offer"),
+
+              const SizedBox(height: 15),
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/banas.png",
+                        title: "Organic Bananas",
+                        subtitle: "7pcs, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/pngfuel 1.png",
+                        title: "Red Apple",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/banas.png",
+                        title: "Organic Bananas",
+                        subtitle: "7pcs, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/pngfuel 1.png",
+                        title: "Red Apple",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              const SectionHeader(title: "Best Selling"),
+
+              const SizedBox(height: 15),
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/p 1.png",
+                        title: "Bell Pepper Red",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/p 2.png",
+                        title: "Ginger",
+                        subtitle: "250gm, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/p 1.png",
+                        title: "Bell Pepper Red",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/p 2.png",
+                        title: "Ginger",
+                        subtitle: "250gm, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              const SectionHeader(title: "Groceries"),
+
+              const SizedBox(height: 15),
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    CategoryCard(
+                      title: "Pulses",
+                      imagePath: "assets/image/p 4.png",
+                      color: const Color(0xffF8A44C),
+                    ),
+                    const SizedBox(width: 15),
+                    CategoryCard(
+                      title: "Rice",
+                      imagePath: "assets/image/p 5.png",
+                      color: const Color(0xff53B175),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 15),
+
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/pngfuel 4.png",
+                        title: "Beef Bone",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/pngfuel 5.png",
+                        title: "Broiler Chicken",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/pngfuel 4.png",
+                        title: "Beef Bone",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                    const SizedBox(width: 15),
+                    SizedBox(
+                      width: 175,
+                      child: ProductScreen(
+                        imagePath: "assets/image/pngfuel 5.png",
+                        title: "Broiler Chicken",
+                        subtitle: "1kg, Price",
+                        price: "\$4.99",
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
             ],
           ),
-          SizedBox(height: 18),
+        ),
+      ),
 
-          SearchWidget(),
-          SizedBox(height: 20),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0,
+        selectedItemColor: const Color(0xff53B175),
+        unselectedItemColor: const Color(0xff181725),
 
-          Image.asset("assets/image/banner.png"),
-          SizedBox(height: 30),
+        onTap: (index) {
+          if (index == 0) {
+            return;
+          }
 
-          TitleHeaderWidget(title: 'Exclusive Offer'),
-          SizedBox(height: 20),
-          SizedBox(
-            height: 250,
-            child: ListView.separated(
-              scrollDirection: .horizontal,
-              itemBuilder: (context, index) => ItemCard(
-                image: "assets/image/pngfuel 1.png",
-                title: "Red Apple",
-                decoration: "1kg, Priceg",
-                price: "\$4.99",
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ExplorScreen(),
               ),
-              separatorBuilder: (context, index) => SizedBox(width: 10),
-              itemCount: 10,
-            ),
-          ),
+            );
+          }
 
-          SizedBox(height: 30),
-
-          TitleHeaderWidget(title: "Best Selling"),
-          SizedBox(height: 20),
-
-          SizedBox(
-            height: 250,
-            child: ListView.separated(
-              scrollDirection: .horizontal,
-              itemBuilder: (context, index) => ItemCard(
-                image: "assets/image/p 1.png",
-                title: "Bell Pepper Red",
-                decoration: "1kg, Priceg",
-                price: "\$4.99",
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CartScreen(),
               ),
-              separatorBuilder: (context, index) => SizedBox(width: 10),
-              itemCount: 10,
-            ),
-          ),
+            );
+          }
 
-          SizedBox(height: 30),
-
-          TitleHeaderWidget(title: "Groceries"),
-          SizedBox(height: 20),
-
-          SizedBox(
-            height: 110,
-            child: ListView.separated(
-              scrollDirection: .horizontal,
-              itemBuilder: (context, index) => GroceriesContainer(
-                image: "assets/image/p 4.png",
-                title: "Pulses $index",
-                Color: Color(0xffF8A44C),
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FavouriteScreen(),
               ),
-              separatorBuilder: (context, index) => SizedBox(width: 10),
-              itemCount: 10,
-            ),
-          ),
-          SizedBox(height: 30),
-          SizedBox(
-            height: 250,
-            child: ListView.separated(
-              scrollDirection: .horizontal,
-              itemBuilder: (context, index) => ItemCard(
-                image: "assets/image/p 1.png",
-                title: "Bell Pepper Red",
-                decoration: "1kg, Priceg",
-                price: "\$4.99",
-              ),
-              separatorBuilder: (context, index) => SizedBox(width: 10),
-              itemCount: 10,
-            ),
-          ),
+            );
+          }
 
-          SizedBox(height: 30),
+          if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AccountScreen(),
+              ),
+            );
+          }
+        },
+
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/icons/store 1.png",
+              width: 24,
+              height: 24,
+            ),
+            label: "Shop",
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/icons/Group 3.png",
+              width: 24,
+              height: 24,
+            ),
+            label: "Explore",
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/icons/Vector(2).png",
+              width: 24,
+              height: 24,
+            ),
+            label: "Cart",
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/icons/bookmark 1.png",
+              width: 24,
+              height: 24,
+            ),
+            label: "Favorite",
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              "assets/icons/Vector(3).png",
+              width: 24,
+              height: 24,
+            ),
+            label: "Account",
+          ),
         ],
       ),
     );

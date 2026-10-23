@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
+
 
 class BeverageItem {
   final String name;
@@ -22,7 +24,7 @@ class BeveragesScreen extends StatefulWidget {
 }
 
 class _BeveragesScreenState extends State<BeveragesScreen> {
-  //  final AudioPlayer _audioPlayer = AudioPlayer();
+   final AudioPlayer _audioPlayer = AudioPlayer();
 
   final List<BeverageItem> beverages = [
     BeverageItem(
@@ -66,15 +68,15 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
   ];
 
   void _playAddSound() async {
-    // await _audioPlayer.stop();
-    // await _audioPlayer.play(
-      // AssetSource('dragon-studio-pop-402324(1).mp3'),
-    // );
+    await _audioPlayer.stop();
+    await _audioPlayer.play(
+      AssetSource('dragon-studio-pop-402324(1).mp3'),
+    );
   }
 
   @override
   void dispose() {
-    // _audioPlayer.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
   @override

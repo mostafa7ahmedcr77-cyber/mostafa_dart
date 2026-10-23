@@ -5,10 +5,12 @@ import 'package:my_projict/screens/explor_screen.dart';
 import 'package:my_projict/screens/favourite_screen.dart';
 import 'package:my_projict/screens/product_screen.dart';
 import 'package:my_projict/screens/search_screen.dart';
-import 'package:my_projict/widget/groceries_container.dart';
-import 'package:my_projict/widget/item_card.dart';
-import 'package:my_projict/widget/search_widget.dart';
-import 'package:my_projict/widget/title_header_widget.dart';
+// import 'package:my_projict/widget/groceries_container.dart';
+// import 'package:my_projict/widget/item_card.dart';
+// import 'package:my_projict/widget/search_widget.dart';
+// import 'package:my_projict/widget/title_header_widget.dart';
+import 'package:my_projict/widgets/category_card.dart';
+import 'package:my_projict/widgets/section_header.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

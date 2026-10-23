@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_projict/screens/cart_screen.dart';
 import 'package:my_projict/screens/filters_screen.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 class Product {
   final String name;
   final String unit;
@@ -24,7 +24,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  // final AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer _audioPlayer = AudioPlayer();
   final TextEditingController _searchController = TextEditingController();
 
   final List<Product> _allProducts = [
@@ -96,19 +96,19 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Future<void> _playSound() async {
-    // await _audioPlayer.stop();
+    await _audioPlayer.stop();
 
-    // await _audioPlayer.play(
-      // AssetSource(
-      //   'dragon-studio-pop-402324(1).mp3',
-      // ),
-    // );
+    await _audioPlayer.play(
+      AssetSource(
+        'dragon-studio-pop-402324(1).mp3',
+      ),
+    );
   }
 
   @override
   void dispose() {
     _searchController.dispose();
-    // _audioPlayer.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
 

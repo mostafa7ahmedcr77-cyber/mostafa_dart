@@ -1,130 +1,336 @@
 import 'package:flutter/material.dart';
-import 'package:my_projict/widget/search_widget.dart';
+import 'package:my_projict/screens/account_screen.dart';
+import 'package:my_projict/screens/beverages_screen.dart';
+import 'package:my_projict/screens/cart_screen.dart';
+import 'package:my_projict/screens/favourite_screen.dart';
+import 'package:my_projict/screens/home_screen.dart';
+import 'package:my_projict/screens/search_screen.dart';
+
+class CategoryModel {
+  final String title;
+  final String imagePath;
+  final Color backgroundColor;
+  final Color borderColor;
+
+  CategoryModel({
+    required this.title,
+    required this.imagePath,
+    required this.backgroundColor,
+    required this.borderColor,
+  });
+}
 
 class ExplorScreen extends StatelessWidget {
   ExplorScreen({super.key});
-  List<category> categories = [
-    category(
-      imagePath: "assets/image/pngfuel 6.png",
-      color: Color(0xff181725),
-      title: "Frash Fruits Vegetable",
+
+    final List<CategoryModel> categories = [
+    CategoryModel(
+      title: 'Frash Fruits\n& Vegetable',
+      imagePath: 'assets/image/pngfuel 6.png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xff53B175).withOpacity(0.1),
+      // ignore: deprecated_member_use
+      borderColor: const Color(0xff53B175).withOpacity(0.7),
     ),
-    category(
-      imagePath: "assets/image/Group 6835.png",
-      color: Color(0xffFFF6EE),
-      title: "Cooking Oil& Ghee",
+    CategoryModel(
+      title: 'Cooking Oil/n& Ghee',
+      imagePath: 'assets/image/Group 6835.png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xffF8A44C).withOpacity(0.1),
+      // ignore: deprecated_member_use
+      borderColor: const Color(0xffF8A44C).withOpacity(0.7),
     ),
-    category(
-      imagePath:
-          "assets/image/22d3aac257974f1aad9e0ec045f5bfc22ef5a6ab copy.png",
-      color: Color(0xffFDE8E4),
-      title: "Meat & Fish",
+    CategoryModel(
+      title: 'Meat & Fish',
+      imagePath: 'assets/image/pngfuel 9.png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xffF7A593).withOpacity(0.25),
+      borderColor: const Color(0xffF7A593),
     ),
-    category(
-      imagePath: "assets/image/pngfuel 6(1).png",
-      color: Color(0xffF4EBF7),
-      title: "Bakery & Snacks",
+    CategoryModel(
+      title: 'Bakery & Snacks',
+      imagePath: 'assets/image/pngfuel 6(1).png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xffD3B0E0).withOpacity(0.25),
+      borderColor: const Color(0xffD3B0E0),
     ),
-    category(
-      imagePath: "assets/image/pngfuel.png",
-      color: Color(0xffFEF8E5),
-      title: "Dairy & Eggs",
+    CategoryModel(
+      title: 'Dairy & Eggs',
+      imagePath: 'assets/image/pngfuel.png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xffFDE598).withOpacity(0.25),
+      borderColor: const Color(0xffFDE598),
     ),
-    category(
-      imagePath: "assets/image/pngfuel 6(2).png",
-      color: Color(0xffEDF7FC),
-      title: "Beverages",
+    CategoryModel(
+      title: 'Beverages',
+      imagePath: 'assets/image/pngfuel 6(2).png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xffB7DFF5).withOpacity(0.25),
+      borderColor: const Color(0xffB7DFF5),
+    ),
+    CategoryModel(
+      title: 'Frash Fruits\n& Vegetable',
+      imagePath: 'assets/image/pngfuel 6.png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xff53B175).withOpacity(0.1),
+      // ignore: deprecated_member_use
+      borderColor: const Color(0xff53B175).withOpacity(0.7),
+    ),
+    CategoryModel(
+      title: 'Cooking Oil/n& Ghee',
+      imagePath: 'assets/image/Group 6835.png',
+      // ignore: deprecated_member_use
+      backgroundColor: const Color(0xffF8A44C).withOpacity(0.1),
+      // ignore: deprecated_member_use
+      borderColor: const Color(0xffF8A44C).withOpacity(0.7),
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
-      child: Column(
-        children: [
-          SizedBox(height: 56),
+    return Scaffold(
+      backgroundColor: Colors.white,
 
-          Text(
-            'Find Products',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: .w400,
-              color: Color(0xff181725),
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'Find Products',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff181725),
           ),
-          SizedBox(height: 30),
+        ),
+      ),
 
-          SearchWidget(),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
 
-          Expanded(
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 15,
-                childAspectRatio: 175 / 190,
+              // Search Bar
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xffF2F3F2),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: IgnorePointer(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search Store',
+                        hintStyle: const TextStyle(
+                          color: Color(0xff7C7C7C),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Image.asset(
+                            'assets/icons/Vector.png',
+                            width: 18,
+                            height: 18,
+                          ),
+                        ),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              itemBuilder: (context, index) => ItemExplorWidget(
-                image: categories[index].imagePath,
-                color: categories[index].color,
-                title: categories[index].title,
+
+              const SizedBox(height: 20),
+
+              // Grid
+              Expanded(
+                child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: categories.length,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.85,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                  ),
+                  itemBuilder: (context, index) {
+                    final category = categories[index];
+
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(18),
+                      onTap: () {
+                        if (category.title == 'Beverages') {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const BeveragesScreen(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: category.backgroundColor,
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(
+                            color: category.borderColor,
+                            width: 1,
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Image.asset(
+                                category.imagePath,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+
+                            const SizedBox(height: 12),
+
+                            Text(
+                              category.title,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff181725),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-              itemCount: categories.length,
+            ],
+          ),
+        ),
+      ),
+
+      // ================= Bottom Navigation Bar =================
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: const Color(0xff53B175),
+        unselectedItemColor: const Color(0xff181725),
+
+        onTap: (index) {
+          // Shop
+          if (index == 0) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ),
+            );
+          }
+
+          // Explore
+          if (index == 1) {
+            return;
+          }
+
+          // Cart
+          if (index == 2) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CartScreen(),
+              ),
+            );
+          }
+
+          // Favourite
+          if (index == 3) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FavouriteScreen(),
+              ),
+            );
+          }
+
+          // Account
+          if (index == 4) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AccountScreen(),
+              ),
+            );
+          }
+        },
+
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/store 1.png',
+              width: 24,
+              height: 24,
             ),
+            label: 'Shop',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/Group 3.png',
+              width: 24,
+              height: 24,
+            ),
+            label: 'Explore',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/Vector(2).png',
+              width: 24,
+              height: 24,
+            ),
+            label: 'Cart',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/bookmark 1(1).png',
+              width: 24,
+              height: 24,
+            ),
+            label: 'Favorite',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/icons/Vector(3).png',
+              width: 24,
+              height: 24,
+            ),
+            label: 'Account',
           ),
         ],
       ),
     );
   }
-}
-
-class ItemExplorWidget extends StatelessWidget {
-  const ItemExplorWidget({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.color,
-  });
-  final String image;
-  final String title;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: color),
-        color: Color(0xffEEF8F2),
-        borderRadius: BorderRadius.circular(18),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 27),
-      child: Column(
-        spacing: 15,
-        mainAxisAlignment: .spaceBetween,
-        children: [
-          Image.asset(image),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: .w400,
-              color: Color(0xff181725),
-            ),
-            textAlign: .center,
-            maxLines: 1,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class category {
-  String imagePath;
-  Color color;
-  String title;
-
-  category({required this.imagePath, required this.color, required this.title});
 }

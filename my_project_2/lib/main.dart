@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_new_project/screens/home_screen.dart';
+import 'package:my_new_project/screens/result_screen.dart';
 
 void main() {
   runApp(BMIApp());
 }
-
-
-
 
 class BMIApp extends StatelessWidget {
   const new({super.key});
@@ -14,7 +12,11 @@ class BMIApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      initialRoute: HomeScreen.route,
+      routes: {
+        HomeScreen.route: (context) => HomeScreen(),
+        ResultScreen.route: (context) => ResultScreen(),
+      },
     );
   }
 }

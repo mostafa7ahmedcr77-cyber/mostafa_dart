@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       min: 50,
                       max: 200,
                       value: height.toDouble(),
-                      activeColor: Color(0xffE83D67),
+                      activeColor: Color.fromARGB(255, 23, 144, 243),
                       onChanged: (value) {
                         height = value.toInt();
                         setState(() {});
@@ -202,7 +202,7 @@ class CustomButtonBMI extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      color: Color(0xffE83D67),
+      color: Color.fromARGB(255, 23, 144, 243),
       padding: EdgeInsets.symmetric(vertical: 30),
       child: Text(
         title,
